@@ -14,7 +14,8 @@ export default function Playground() {
   const images = Array.from({ length: 16 }, (_, i) => {
     const num = i + 1;
     let ext = "png";
-    if ([2, 3, 7, 8, 9, 10, 11, 15].includes(num)) ext = "jpg";
+    // Exact mapping from public/playground files
+    if ([2, 3, 7, 8, 9, 10, 11, 15, 16, 17, 19].includes(num)) ext = "jpg";
     return `/playground/playground${num}.${ext}`;
   });
 
