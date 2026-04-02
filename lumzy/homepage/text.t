@@ -1,0 +1,2 @@
+-> CSS -> Tailwind
+-> tsx

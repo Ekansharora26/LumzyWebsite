@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebel Grace | Projects</title>
+    <!--===== SheryJS =====-->
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SV2DKQ6F7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9SV2DKQ6F7');
+    </script>
+  <script type="module" crossorigin src="assets/main-QDtuMWOY.js"></script>
+  <link rel="stylesheet" crossorigin href="assets/main-DWkhxESI.css">
+</head>
+
+<body>
+    <!--===== display laoder from js component folder nav.js =====-->
+    <!--===== display nav from js component folder nav.js =====-->
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!--===== Main Content =====-->
+    <main id="main">
+        <!-- All Projects -->
+        <section class="projects_all">
+            <div class="container" id="projectsContainer">
+                <!-- Dynamic data from js/data/projectPage.js -->
+            </div>
+        </section>
+    </main>
+
+    <!--===== Footer =====-->
+    <footer></footer>
+
+    <!--===== Scripts =====-->
+    <!-- Three.js is needed for 3d Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <!-- ControlKit is needed for Debug Panel -->
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
+    <!-- Custom -->
+</body>
+
+</html>
