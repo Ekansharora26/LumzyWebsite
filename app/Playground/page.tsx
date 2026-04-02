@@ -72,17 +72,29 @@ export default function Playground() {
 
   return (
     <>
-      <main id="main" className="playground_main" style={{ minHeight: "100vh", position: "relative" }}>
-        <div className="playground_images" ref={containerRef}>
+      <main id="main" className="playground_main" style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+        <div className="playground_images" ref={containerRef} style={{ width: "100%", height: "100vh" }}>
           {images.map((src, i) => (
             <img key={i} src={src} alt={`Playground ${i + 1}`} style={{ display: i === 0 ? "block" : "none" }} />
           ))}
         </div>
-        <div className="playgroundText">
-          <SplitText className="font12" tag="h1">
-            A realm where ideas transcend conventional thinking, and the freedom to create is boundless, stretching into the infinite possibilities of imagination.
-          </SplitText>
-          <SplitText className="font12 mT20" tag="h2">Let&apos;s Scroll</SplitText>
+        <div className="playgroundText" style={{ 
+          position: "absolute", 
+          left: "5vw", 
+          top: "50%", 
+          transform: "translateY(-50%)", 
+          zIndex: 20,
+          pointerEvents: "none",
+          maxWidth: "30vw"
+        }}>
+          <div style={{ color: "#fff", lineHeight: "1.4" }}>
+            <SplitText className="font12" tag="h1">
+              A realm where ideas transcend conventional thinking, and the freedom to create is boundless, stretching into the infinite possibilities of imagination.
+            </SplitText>
+          </div>
+          <div style={{ color: "#fff", opacity: 0.6 }} className="mT20">
+            <SplitText className="font12" tag="h2">Let&apos;s Scroll</SplitText>
+          </div>
         </div>
       </main>
     </>

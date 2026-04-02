@@ -1,12 +1,10 @@
 import Link from "next/link";
-import InfoGrid from "./InfoGrid";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer>
-      <InfoGrid />
       <div className="container">
         {/* Top */}
         <div className="top">

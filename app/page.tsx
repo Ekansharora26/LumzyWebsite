@@ -6,6 +6,7 @@ import Image from "next/image";
 import Footer from "@/src/component/Footer";
 import SplitText from "@/src/component/SplitText";
 import FlipLink from "@/src/component/FlipLink";
+import InfoGrid from "@/src/component/InfoGrid";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -111,7 +112,6 @@ export default function Home() {
   return (
     <>
       <main id="main">
-
         {/* ── Hero ─────────────────────────────────────────── */}
         <section className="hero">
           <div className="hero_main">
@@ -121,26 +121,8 @@ export default function Home() {
             <h1 className="fontVW">Rebel.Grace</h1>
           </div>
 
-          {/* Bio row */}
-          <div className="bio mT70">
-            <div className="container">
-              <div className="bio_wrapper">
-                <div>
-                  <p className="font12">Based In</p>
-                  <p className="font12">Lahore, Pakistan</p>
-                </div>
-                <div>
-                  <p className="font12">Role</p>
-                  <p className="font12">UIUX Designer &amp; Developer</p>
-                </div>
-                <div>
-                  <p className="font12">Availability</p>
-                  <p className="font12">Open to work</p>
-                </div>
-              </div>
-              <FlipLink href="/Contact">Get&nbsp;in&nbsp;Touch</FlipLink>
-            </div>
-          </div>
+          <InfoGrid />
+
         </section>
 
         {/* ── About ─────────────────────────────────────────── */}
