@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/src/component/Navbar";
 import Loader from "@/src/component/Loader";
 import LenisProvider from "@/src/component/LenisProvider";
+import SheryInit from "@/src/component/SheryInit";
 
 export const metadata: Metadata = {
   title: "Rebel Grace",
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <LenisProvider>
+          <SheryInit />
           <Loader />
           <Navbar />
           {children}

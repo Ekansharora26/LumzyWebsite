@@ -97,6 +97,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // Accordion Logic
     answerRefs.current.forEach((el, i) => {
       if (!el) return;
       if (openAccordion === i) {
@@ -107,6 +108,25 @@ export default function Home() {
         el.style.opacity = "0";
       }
     });
+
+    // Initialize Shery Image Effects
+    const Shery = (window as any).Shery;
+    if (Shery) {
+      try {
+        Shery.imageEffect(".image-effect", {
+          style: 3, // Liquid Wave Effect
+          config: {
+            distort: { value: true },
+            masker: { value: true },
+            gooey: { value: true },
+            infiniteGooey: { value: true },
+            duration: { value: 1, range: [0, 10] },
+          },
+        });
+      } catch (err) {
+        console.warn("Shery ImageEffect failed:", err);
+      }
+    }
   }, [openAccordion]);
 
   return (
@@ -115,7 +135,7 @@ export default function Home() {
         {/* ── Hero ─────────────────────────────────────────── */}
         <section className="hero">
           <div className="hero_main">
-            <div className="heroimage">
+            <div className="heroimage image-effect">
               <Image src="/images/header_img_one.jpg" alt="Rebel Grace" fill style={{objectFit: 'cover'}} />
             </div>
             <h1 className="fontVW">Rebel.Grace</h1>
@@ -164,7 +184,7 @@ export default function Home() {
               <div className="row1">
                 {featuredProjects.slice(0, 2).map((p) => (
                   <Link key={p.id} href={p.href} className="case">
-                    <div className="projectCase">
+                    <div className="projectCase image-effect">
                       <Image src={p.img} alt={p.title} fill style={{objectFit: 'cover'}} />
                     </div>
                     <div className="details">
@@ -177,7 +197,7 @@ export default function Home() {
               {/* Row 2 */}
               <div className="row2">
                 <Link href={featuredProjects[2].href} className="case">
-                  <div className="projectCase">
+                  <div className="projectCase image-effect">
                     <Image src={featuredProjects[2].img} alt={featuredProjects[2].title} fill style={{objectFit: 'cover'}} />
                   </div>
                   <div className="details">
@@ -255,7 +275,7 @@ export default function Home() {
                       {item.desc}
                     </p>
                   </div>
-                  <div className="img">
+                  <div className="img image-effect">
                     <Image src={item.img} alt={item.title} fill style={{objectFit: 'cover'}} className="clipImageReveal" />
                   </div>
                 </div>
@@ -272,11 +292,11 @@ export default function Home() {
             </div>
             <div className="wrapper mT70">
               <div className="categories">
-                {expertise.map((item) => (
+                  {expertise.map((item) => (
                   <p key={item} className="font12">{item}</p>
                 ))}
               </div>
-              <div className="areasImage">
+              <div className="areasImage image-effect">
                 <Image className="mainImage" src="/images/about_header.jpg" alt="Fields of Expertise" fill style={{objectFit: 'cover'}} />
               </div>
             </div>

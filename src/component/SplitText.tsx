@@ -27,14 +27,29 @@ export default function SplitText({
     const el = containerRef.current;
     if (!el) return;
 
-    // Split text into words → each word wrapped in span>span
-    const words = children.split(" ");
-    el.innerHTML = words
-      .map(
-        (word) =>
-          `<span style="display:inline-block;overflow:hidden;margin:0"><span style="display:inline-block;transform:translateY(120%)">${word}&nbsp;</span></span>`
-      )
-      .join("");
+    // Clear and split by character
+    const text = children;
+    el.innerHTML = "";
+    
+    // Create fragment for performance
+    const fragment = document.createDocumentFragment();
+    
+    text.split("").forEach((char) => {
+      const outerSpan = document.createElement("span");
+      outerSpan.style.display = "inline-block";
+      outerSpan.style.overflow = "hidden";
+      outerSpan.style.verticalAlign = "top";
+      
+      const innerSpan = document.createElement("span");
+      innerSpan.style.display = "inline-block";
+      innerSpan.style.transform = "translateY(120%)";
+      innerSpan.innerHTML = char === " " ? "&nbsp;" : char;
+      
+      outerSpan.appendChild(innerSpan);
+      fragment.appendChild(outerSpan);
+    });
+    
+    el.appendChild(fragment);
 
     const ctx = gsap.context(() => {
       const innerSpans = el.querySelectorAll<HTMLElement>("span > span");
@@ -42,21 +57,21 @@ export default function SplitText({
       if (animateOnScroll) {
         gsap.to(innerSpans, {
           y: "0%",
-          duration: 1,
+          duration: 0.8,
           ease: "power4.out",
-          stagger: 0.04,
+          stagger: 0.02,
           delay,
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
+            start: "top 92%",
           },
         });
       } else {
         gsap.to(innerSpans, {
           y: "0%",
-          duration: 1,
+          duration: 0.8,
           ease: "power4.out",
-          stagger: 0.04,
+          stagger: 0.02,
           delay,
         });
       }
@@ -66,7 +81,16 @@ export default function SplitText({
   }, [children, animateOnScroll, delay]);
 
   return (
-    <Tag ref={containerRef} className={`splitText ${className}`}>
+    <Tag 
+      ref={containerRef} 
+      className={`splitText ${className}`}
+      aria-label={children}
+    >
+      {/* 
+        The actual text is rendered dynamically in useEffect for split spans.
+        We keep 'children' here as a fallback and for hydration consistency 
+        but it will be replaced by the spans on client-side.
+      */}
       {children}
     </Tag>
   );
